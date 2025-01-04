@@ -1,8 +1,10 @@
 # Anomaly Detection in Large-Scale Cloud Systems
 
 [![arXiv](https://img.shields.io/badge/arXiv-2411.09047-b31b1b.svg)](https://arxiv.org/abs/2411.09047)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14062900.svg)](https://doi.org/10.5281/zenodo.14062900)
+**Dataset DOI:** [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14062900.svg)](https://doi.org/10.5281/zenodo.14062900)
+**Software DOI:** [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14598119.svg)](https://doi.org/10.5281/zenodo.14598119)
 ![Python](https://img.shields.io/badge/python-3.11.0-blue.svg)
+
 
 This repository contains the code implementation for the ICSE SEIP 2025 paper titled **"Anomaly Detection in Large-Scale Cloud Systems: An Industry Case and Dataset."**
 The preprint for the paper is available [here](https://doi.org/10.48550/arXiv.2411.09047).
