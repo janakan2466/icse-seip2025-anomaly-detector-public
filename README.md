@@ -28,9 +28,24 @@ This guide helps you set up the environment for the "Anomaly Detection" project.
 
 ---
 
-## Steps to Set Up the Environment
+## Setup Instructions
 
-### 1. Clone the Repository
+
+### Using Docker
+
+#### 1. Build the Docker image using the provided `Dockerfile`:
+```bash
+docker build -t anomaly-detector .
+```
+
+#### 2. Run the Docker container:
+```bash
+docker run -it anomaly-detector
+```
+
+### Using Virtual Environment
+
+#### 1. Clone the Repository
 Clone the repository to your local machine:
 ```bash
 git clone <repository-url>
@@ -41,20 +56,20 @@ Navigate to the project directory:
 cd anomaly-detector
 ```
 
-### 2. Verify Python Version
+#### 2. Verify Python Version
 Ensure you have Python 3.11.0 installed:
 ```bash
 python --version
 ```
 If Python 3.11.0 is not installed, download it from the [official Python website](https://www.python.org/downloads/release/python-3110/) and install it.
 
-### 3. Create a Virtual Environment
+#### 3. Create a Virtual Environment
 Create a virtual environment using Python 3.11.0:
 ```bash
 python -m venv venv
 ```
 
-### 4. Activate the Virtual Environment
+#### 4. Activate the Virtual Environment
 Activate the virtual environment:
 
 - **On Windows**:
@@ -71,22 +86,21 @@ Verify that the virtual environment is using Python 3.11.0:
 python --version
 ```
 
-### 5. Install Dependencies
+#### 5. Install Dependencies
 Install all required libraries from the `requirements.txt` file:
 ```bash
 pip install -r requirements.txt
 ```
 
-### 6. Run Tests
+#### 6. Run Tests
 Run a test script or a few commands from the project to ensure everything is working correctly.
 
-### 7. Optional: Update Dependencies
+#### 7. Optional: Update Dependencies
 If additional libraries are needed, install them and update `requirements.txt`:
 ```bash
 pip install <library-name>
 pip freeze > requirements.txt
 ```
-
 
 ### Directory Structure
 
