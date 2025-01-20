@@ -51,7 +51,7 @@ If Python 3.11.0 is not installed, download it from the [official Python website
 
 ## Setup Options
 
-### Using Docker
+### Option-A: Using Docker
 
 #### 1. Build the Docker image using the provided `Dockerfile`:
 ```bash
@@ -63,7 +63,7 @@ docker build -t anomaly-detector .
 docker run -it anomaly-detector
 ```
 
-### Using Virtual Environment
+### Option-B: Using Virtual Environment
 
 #### 1. Create a Virtual Environment
 Create a virtual environment using Python 3.11.0:
