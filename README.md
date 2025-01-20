@@ -109,7 +109,7 @@ pip freeze > requirements.txt
 Use the following directory structure for your project:
 
 ```plaintext
-anomaly-detector/
+icse-seip2025-anomaly-detector-public/
 ├── conf/                # Configuration files (e.g., config.yaml)
 ├── src/                 # Source code files
 ├── data/
