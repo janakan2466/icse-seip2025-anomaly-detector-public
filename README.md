@@ -17,7 +17,7 @@ This guide helps you set up the environment for the "Anomaly Detection" project.
 
 ---
 
-## Requirements
+## 1 Requirements
 
 - **Python Version**: Python 3.11.0
 - **Operating System**: Windows, macOS, or Linux
@@ -28,9 +28,11 @@ This guide helps you set up the environment for the "Anomaly Detection" project.
 
 ---
 
-## Setup Instructions
+## 2 Setup Instructions
 
-### 1. Clone the Repository
+
+
+### 2.1 Clone the Repository
 Clone the repository to your local machine:
 ```bash
 git clone <repository-url>
@@ -41,7 +43,7 @@ Navigate to the project directory:
 cd icse-seip2025-anomaly-detector-public
 ```
 
-### 2. Verify Python Version
+### 2.2 Verify Python Version
 Ensure you have Python 3.11.0 installed:
 ```bash
 python --version
@@ -49,29 +51,22 @@ python --version
 If Python 3.11.0 is not installed, download it from the [official Python website](https://www.python.org/downloads/release/python-3110/) and install it.
 
 
-## Setup Options
+### Setup Options
 
-### Option-A: Using Docker
+> **Using Docker**:  
+> All dependencies, directory structures, and data downloads are handled automatically. Refer to [Section 5.1 Using Docker](#51-using-docker) for execution details.
 
-#### 1. Build the Docker image using the provided `Dockerfile`:
-```bash
-docker build -t anomaly-detector .
-```
+> **Using a Virtual Environment**:  
+> Continue with the steps below and refer to [Section 5.2 Using Virtual Environment](#52-using-virtual-environment) for execution instructions.
 
-#### 2. Run the Docker container:
-```bash
-docker run -it anomaly-detector
-```
 
-### Option-B: Using Virtual Environment
-
-#### 1. Create a Virtual Environment
+### 2.3 Create a Virtual Environment
 Create a virtual environment using Python 3.11.0:
 ```bash
 python -m venv venv
 ```
 
-#### 2. Activate the Virtual Environment
+### 2.4 Activate the Virtual Environment
 Activate the virtual environment:
 
 - **On Windows**:
@@ -88,23 +83,23 @@ Verify that the virtual environment is using Python 3.11.0:
 python --version
 ```
 
-#### 3. Install Dependencies
+### 2.5 Install Dependencies
 Install all required libraries from the `requirements.txt` file:
 ```bash
 pip install -r requirements.txt
 ```
 
-#### 4. Run Tests
+### 2.6 Run Tests
 Run a test script or a few commands from the project to ensure everything is working correctly.
 
-#### 5. Optional: Update Dependencies
+### 2.7 Optional: Update Dependencies
 If additional libraries are needed, install them and update `requirements.txt`:
 ```bash
 pip install <library-name>
 pip freeze > requirements.txt
 ```
 
-### Directory Structure
+### 2.8 Directory Structure
 
 Use the following directory structure for your project:
 
@@ -126,13 +121,14 @@ You can **create these directories** using the following shell script:
 mkdir -p conf src data/massaged data/labels results/model_experiments trained_models
 ```
 
-## Data Source
+
+## 3 Data Source
 The data required for this project is provided in the following dataset:
 > Islam, M. S., Rakha, M. S., Pourmajidi, W., Sivaloganathan, J., Steinbacher, J., & Miranskyy, A. (2024).
 > Dataset for the paper "Anomaly Detection in Large-Scale Cloud Systems: An Industry Case and Dataset" (v1.0) [Data set].
 > Zenodo. https://doi.org/10.5281/zenodo.14062900
 
-### Input Data
+### 3.1 Input Data
 
 - Place pivoted data files (e.g., `pivoted_data_all.parquet`) in `data/massaged/`.
 - Place anomaly window labels `anomaly_windows.csv` in `data/labels/`.
@@ -143,15 +139,18 @@ curl -L -o data/labels/anomaly_windows.csv https://zenodo.org/records/14062900/f
 curl -L -o data/massaged/pivoted_data_all.parquet https://zenodo.org/records/14062900/files/pivoted_data_all.parquet?download=1
 ```
 
+
 ---
+> **For manual setup using a virtual environment**, after downloading the files, proceed to [Section 5.2 Using Virtual Environment](#52-using-virtual-environment) for execution details.
 
-## File Descriptions
 
-### Configuration
+## 4 File Descriptions
+
+### 4.1 Configuration
 
 - **`config.yaml`**: Stores the configuration for file paths, training/testing parameters, and model settings.
 
-### Scripts
+### 4.2 Scripts
 
 - **`run_experiment__multi_models_GRU_ANN.py`**: The main script for coordinating anomaly detection experiments. It handles data preprocessing, model training, evaluation, and grid search for optimizing parameters.
 
@@ -164,7 +163,7 @@ curl -L -o data/massaged/pivoted_data_all.parquet https://zenodo.org/records/140
 - **`plotting_module.py`**: Provides utilities for visualizing the results of anomaly detection, such as normalized 5XX counts and detected anomalies.
 
 
-### Results Directory (`./results/model_experiments/`)
+### 4.3 Results Directory (`./results/model_experiments/`)
 
 #### Files:
 
@@ -182,11 +181,25 @@ curl -L -o data/massaged/pivoted_data_all.parquet https://zenodo.org/records/140
 
 ---
 
-## Execution
+## 5 Execution
+
+### 5.1 Using Docker
+
+#### 5.1.1 Build the Docker image using the provided `Dockerfile`:
+```bash
+docker build -t anomaly-detector .
+```
+
+#### 5.1.2 Run the Docker container:
+```bash
+docker run -it anomaly-detector
+```
+
+### 5.2 Using Virtual Environment
 
 The workflow is configured using the [Hydra](https://github.com/facebookresearch/hydra) framework.
 
-### Configuring the Model Type
+#### 5.2.1 Configuring the Model Type
 
 The model type (e.g., ANN or GRU) is configurable in the `conf.yaml` file. Modify the following parameters under `train_test_config`:
 
@@ -195,7 +208,7 @@ train_test_config:
   use_model: ANN                 # Options: ANN or GRU
 ```
 
-### Configuring NAB Scoring Profile
+#### 5.2.2 Configuring NAB Scoring Profile
 
 The NAB scoring profile used for evaluation can be configured in the `conf.yaml` file. Update the following parameters under the `evaluation` section:
 
@@ -205,7 +218,7 @@ evaluation:  # Default parameters
 ```
 
 
-### Run the Project
+#### 5.2.3 Run the Project
 To run the project, execute the main script after setting up the required directories and input files:
 
 ```bash
